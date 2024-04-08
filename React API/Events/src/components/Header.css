@@ -1,0 +1,14 @@
+span {
+     float:right;
+     font-size: larger;
+}
+
+#title {
+     float:left;
+     font-family: 'Courier New', Courier, monospace;
+     font-size: x-large;
+}
+
+#signup{
+     margin: 15px;
+}
