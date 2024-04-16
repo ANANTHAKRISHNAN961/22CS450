@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<HTML>
+    <body style="background-image:url('img.jpg')">
+        <div id="div" style="text-align:center">
+            <center>
+                <h1 style="color:indigo">ElItE EvEnTs</h1><hr>
+                <h1>EVENTS BOOKED IN THIS MONTH</h1>
+                <button style="height:50px;width:200px;padding:40px;background-color:rgb(131, 187, 169);font-size:x-large" onclick="change()">VIEW</button>
+    
+            </center>
+        </div>
+        <script>
+            function change()
+            {
+                const obj=new XMLHttpRequest();
+                obj.onload=function(){
+                    document.getElementById("div").innerHTML=this.responseText;
+                }
+                obj.open("GET","events.txt",true);
+                obj.send();
+            }
+        </script>
+    </body>
+</HTML>

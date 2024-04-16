@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js">
+
+        </script>
+        <script>
+    $(document).ready(function(){
+    $("#button1").click(function(){
+        alert("You are a member already!!")
+    });
+    $("#button2").dblclick(function(){
+        $(this).css("background-color","lightblue")
+    });
+    $("#p5").click(function(){
+        $("#p1").hide();
+        $("#p2").hide();
+        $("#p3").hide();
+        $("#p4").hide();
+    });
+    $("#input").mouseenter(function(){
+        $(this).css("background-color","yellow");
+    });
+    $("#input").mouseleave(function(){
+        $(this).css("background-color","pink");
+    });
+    $("#slide").hover(function(){
+     $("#div").slideDown("slow");
+    });
+    });
+        </script>
+    </head>
+    <body style="background-image:url('img.jpg')">
+        <center>
+        <h2>ElItE EvEnTs</h2><hr>
+    </center>
+        <button id="button1" style="width:190px;height:30px;padding:30px;font-size:x-large">Member?</button>
+        <p id="slide" style="font-size:x-large">GET YOUR EVENTS ELLITED HERE</p>
+        <p style="font-size:x-large">GET UPTO 40% OFFER FOR WEDDINGS</p>
+        <div style="height:40px;width:50px;padding:50px;display:none;font-size:xx-large;color:darkmagenta" id="div">OFFER CLOSES SOON!!</div>
+        <center>
+        <button id="button2" style="height:100px;width:200px;padding:40px;background-color:rgb(224, 155, 155);font-size:medium">Double Tap to get COUPON</button>
+        <h1>PACKAGES AVAILABLE</h1>
+        <p id="p1" style="font-size:x-large">DECORATIONS</p>
+        <p id="p2" style="font-size:x-large">PHOTOGRAPHY</p>
+        <p id="p3" style="font-size:x-large">CATTERING</p>
+        <p id="p4" style="font-size:x-large">MUSIC & DJ</p>
+        <p id="p5" style="font-size:x-large">CUSTOM</p>
+        <input type="text" id="input" name="package" style="padding:20px">
+        
+    </center>   
+    </body>
+</html>

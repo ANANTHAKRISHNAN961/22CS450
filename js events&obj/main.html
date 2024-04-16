@@ -1,0 +1,77 @@
+ <!DOCTYPE html>
+ <html>
+    <head>
+        HomePage
+    </head>
+    <body style="background-color:rgb(175, 156, 150)">
+        <center>
+            <p id="p1" style="font-size:xx-large">ElItE eVENtS</p><br>
+            <div style="background-color:black">
+            <hr><hr>
+            </div>
+            <button onclick="changebg()">Click!!</button>
+            <h3>Events Available</h3><br>
+            <button id="b1" onclick="list()">Tap To View</button>
+            <div id="div"></div><br>
+            <div onmouseover="mouseover()" onmouseout="mouseout()" id="m1" style="width:150px;height:20px;padding:50px;background-color:rgb(146, 239, 240) ;font-size:xx-large">OFFERS!!!</div><br>
+            <label>Enter the event You are Looking for:</label><br><br>
+            <input type="text" id="input" onchange="changetext()">
+            <p style="font-size:xx-large">EVENT HISTORY</p>
+            <button onclick="displayinfo()">Press..</button>
+            <div id="events"></div>
+        </center>
+        <script>
+            function changebg()
+            {
+                const x=document.getElementById('p1');
+                x.style.backgroundColor="lightyellow";
+            }
+            function list()
+            {
+                const a=document.getElementById('div');
+                a.innerHTML="";
+                a.innerHTML+="<p>Birthday</p>";
+                a.innerHTML+="<p>Wedding</p>";
+                a.innerHTML+="<p>Conferences</p>";
+                
+            }
+            function mouseover()
+            {
+                const z=document.getElementById('m1');
+                z.innerHTML="50% discount";
+                z.style.fontSize="x-large";
+            }
+            function mouseout()
+            {
+                const x=document.getElementById('m1');
+                x.innerHTML="OFFERS!!";
+            }
+            function changetext()
+            {
+                const q=document.getElementById('input');
+                q.value=q.value.toUpperCase();
+            }
+            class Event
+            {
+               constructor(name,location,date)
+               {
+                this.name=name;
+                this.date=date;
+                this.location=location; 
+               }
+                display()
+               {
+                return `Event: ${this.name},Date:${this.date},Location:${this.location}`;
+               }
+            }
+            const ev=new Event("Wedding","06/04/2005","chennai");
+            function displayinfo()
+            {
+              const s=document.getElementById('events');
+                s.innerHTML=ev.display();
+            }
+        </script>
+        
+
+    </body>
+ </html>
