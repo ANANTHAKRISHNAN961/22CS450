@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Entry form</title>
+    </head>
+    
+    <body style="background-color:rgb(216, 165, 236); background-image:url('img.png')">
+        <form method="get" onsubmit="return validation()">
+    <center>
+        <h1> TCEMOOC</h1>
+        <h2>REGISTRATION!!!</h2>
+    <div style="background-color:black" >
+        <hr><hr>
+    </div>
+    
+ 
+    <h3 style="color:crimson">Sign Up</h3>
+    <label>FirstName:</label>
+    <input type="text" id="fn" name="firstname" value="Shriniha">
+    <label>LastName:</label>
+    <input type="text" id="ln" name="lastname" value="N M" ><br><br>
+    <label>D.O.B:</label>
+    <input type="date" id="date" name="dob" ><br><br>
+    <label>Address:</label>
+    <input type="text" id="ad" name="address"><br><br>
+    <label > Student E-mail:</label>
+    <input type="email" id="email" placeholder="niha@gmail.com"><br><br>
+    <label>Username:</label>
+    <input type="text" id="un" name="username"><br><br>
+    <label>Password:</label>
+    <input type="password" id="pw"><br><br>
+    <label>Gender:</label>
+    <label>Male</label>
+    <input type="radio" name="gender" value="male">
+    <label>Female</label>
+    <input type="radio" name="gender" value="feale"><br><br>
+    <label>Department::</label><br>
+    <label>CSE</label>
+    <input type="radio" name="dept">
+    <label>ECE</label>
+    <input type="radio" name="dept">
+    <label>MECH</label>
+    <input type="radio" name="dept"><br><br>
+    <label>COURSES:[select only one]</label><br><br>
+    <input type="checkbox" name="ai">
+    <label>ARTIFICIAL INTELLIGENCE</label><BR>
+        <input type="checkbox" name="sn">
+    <label>SECURITY NETWORKS</label><BR>
+        <input type="checkbox" name="al">
+    <label>ALGORITHMS</label><BR>
+        <input type="checkbox" name="web">
+    <label>WEB DEVELOPMENT</label><BR><br>
+    <input type="checkbox" name="agree">
+    <label>I agree to terms and condirions</label><br><br>
+    <input type="submit" name="submit">
+
+    </center>
+</form>
+<script>
+    function validation()
+    {
+   var firstname=document.getElementById('fn').value;
+   var lastname=document.getElementById('ln').value;
+   var dob=document.getElementById('date').value;
+   var email=document.getElementById('email').value;
+   var username=document.getElementById('un').value;
+   var password=document.getElementById('pw').value;
+   var passwordpattern= /[a-zA-Z]{3}[0-9]{3}/;
+   if(firstname ===""|| lastname===""|| dob==="" || email==="" || username==="" ||!passwordpattern.test(password))
+   {
+    alert("Please do Fill the Details Completely!!! and the SUBMIT!");
+    return false;
+   }
+   return true;
+    }
+</script>
+</body>
+</html>
