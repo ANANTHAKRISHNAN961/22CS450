@@ -1,0 +1,101 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5;
+}
+
+#app {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #fff;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.form-container {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 10px; /* Adjusted margin */
+    color: #333;
+}
+
+input[type="text"],
+input[type="date"] {
+    width: calc(100% - 24px); /* Adjusted width */
+    padding: 12px;
+    margin-bottom: 20px; /* Adjusted margin */
+    box-sizing: border-box;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 10px; /* Adjusted margin */
+    box-sizing: border-box;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button {
+    color: #fff;
+    font-weight: bold;
+}
+
+#bookBtn {
+    background-color: #007bff;
+}
+
+#bookBtn:hover {
+    background-color: #0056b3;
+}
+
+#resetBtn {
+    background-color: #6c757d;
+}
+
+#resetBtn:hover {
+    background-color: #5a6268;
+}
+
+#submitBtn {
+    background-color: #28a745;
+}
+
+#submitBtn:hover {
+    background-color: #218838;
+}
+
+#message {
+    text-align: center;
+    color: #333;
+    font-weight: bold;
+}
+
+.button-container {
+    display: flex;
+    flex-direction: column; /* Align buttons vertically */
+}
+
+@media only screen and (max-width: 500px) {
+    input[type="text"],
+    input[type="date"],
+    button {
+        font-size: 14px;
+    }
+}
