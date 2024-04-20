@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CRUD Operations</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+    background-image: url('unsplash.jpg');
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+  }
+
+  .container {
+    width: 80%;
+    max-width: 800px;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+
+  input[type="text"] {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+
+  button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-top: 20px;
+    margin-right: 10px;
+  }
+
+  button:hover {
+    background-color: #0056b3;
+  }
+
+  textarea {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin-top: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical;
+  }
+
+  .button-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+
+  .button-container button:last-child {
+    margin-right: 0;
+  }
+
+  h2 {
+    color: #007bff;
+    margin-bottom: 20px;
+  }
+</style>
+</head>
+<body>
+  <div class="container">
+    <h2>Event Management</h2>
+    <div>
+      <label for="eventNameInput">Event Name:</label><br>
+      <input type="text" id="eventNameInput"><br>
+      <label for="customerNameInput">Customer Name:</label><br>
+      <input type="text" id="customerNameInput"><br>
+      <label for="idInput">ID (for PUT, DELETE, PATCH):</label><br>
+      <input type="text" id="idInput"><br>
+    </div>
+    <div class="button-container">
+      <button onclick="getData()">GET Data</button>
+      <button onclick="addData()">POST Data</button>
+      <button onclick="updateData()">PUT Data</button>
+      <button onclick="patchData()">PATCH Data</button>
+      <button onclick="deleteData()">DELETE Data</button>
+    </div>
+    <textarea id="output" rows="10" placeholder="Output will appear here"></textarea>
+  </div>
+
+  <script>
+    const endpoint = 'http://localhost:3000/Events';
+
+    async function getData() {
+      try {
+        const response = await fetch(endpoint);
+        const data = await response.json();
+        document.getElementById('output').value = JSON.stringify(data, null, 2);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    }
+
+    async function addData() {
+      try {
+        const eventName = document.getElementById('eventNameInput').value;
+        const customerName = document.getElementById('customerNameInput').value;
+        const newData = {
+          Eve_name: eventName,
+          cus_name: customerName
+        };
+        const response = await fetch(endpoint, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(newData)
+        });
+        console.log('Data added:', response);
+      } catch (error) {
+        console.error('Error adding data:', error);
+      }
+    }
+
+    async function updateData() {
+      try {
+        const id = document.getElementById('idInput').value;
+        const eventName = document.getElementById('eventNameInput').value;
+        const customerName = document.getElementById('customerNameInput').value;
+        const updatedData = {
+          id: id,
+          Eve_name: eventName,
+          cus_name: customerName
+        };
+        const response = await fetch(`${endpoint}/${updatedData.id}`, {
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(updatedData)
+        });
+        console.log('Data updated:', response);
+      } catch (error) {
+        console.error('Error updating data:', error);
+      }
+    }
+
+    async function patchData() {
+      try {
+        const id = document.getElementById('idInput').value;
+        const eventName = document.getElementById('eventNameInput').value;
+        const customerName = document.getElementById('customerNameInput').value;
+        const patchedData = {
+          Eve_name: eventName,
+          cus_name: customerName
+        };
+        const response = await fetch(`${endpoint}/${id}`, {
+          method: 'PATCH',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(patchedData)
+        });
+        console.log('Data patched:', response);
+      } catch (error) {
+        console.error('Error patching data:', error);
+      }
+    }
+   
+    async function deleteData() {
+      try {
+        const id = document.getElementById('idInput').value;
+        const response = await fetch(`${endpoint}/${id}`, {
+          method: 'DELETE'
+        });
+        console.log('Data deleted:', response);
+      } catch (error) {
+        console.error('Error deleting data:', error);
+      }
+    }
+  </script>
+</body>
+</html>
