@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        .button-container {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .button {
+            display: inline-block;
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        .button:hover {
+            background-color: #45a049;
+        }
+
+        #events-container {
+            text-align: center;
+        }
+
+        .event-title {
+            margin-bottom: 10px;
+            padding: 10px;
+            background-color: #f9f9f9;
+            border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s ease;
+        }
+
+        .event-title:hover {
+            background-color: #e0e0e0;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Upcoming Events</h1>
+
+    <div class="button-container">
+        <button class="button" onclick="fetchByPath(1)">Fetch All Event Titles</button>
+        <button class="button" onclick="fetchByPath(2)">Fetch the Last Event</button>
+        <button class="button" onclick="fetchByPath(3)">Fetch All Conferences</button>
+        <button class="button" onclick="fetchByPath(4)">Fetch Events (Price > $200)</button>
+        <button class="button" onclick="fetchByPath(5)">Fetch All Workshops and Seminars</button>
+    </div>
+
+    <div id="events-container"></div>
+</div>
+
+<script>
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            xmlDoc = this.responseXML;
+        }
+    };
+    xhttp.open("GET", "events.xml", true);
+    xhttp.send();
+
+    function fetchByPath(path) {
+        var txt = "";
+        switch(path) {
+            case 1:
+                var nodes = xmlDoc.evaluate("/events/event/title", xmlDoc, null, XPathResult.ANY_TYPE, null);
+                break;
+            case 2:
+                var nodes = xmlDoc.evaluate("//event[last()]/title", xmlDoc, null, XPathResult.ANY_TYPE, null);
+                break;
+            case 3:
+                var nodes = xmlDoc.evaluate("/events/event[@category='conference']/title", xmlDoc, null, XPathResult.ANY_TYPE, null);
+                break;
+            case 4:
+                var nodes = xmlDoc.evaluate("/events/event[price > 200]/title", xmlDoc, null, XPathResult.ANY_TYPE, null);
+                break;
+            case 5:
+                var nodes = xmlDoc.evaluate("/events/event[@category='workshop']/title | /events/event[@category='seminar']/title", xmlDoc, null, XPathResult.ANY_TYPE, null);
+                break;
+        }
+        var result = nodes.iterateNext();
+        while (result) {
+            txt += '<div class="event-title">' + result.childNodes[0].nodeValue + '</div>';
+            result = nodes.iterateNext();
+        }
+        document.getElementById("events-container").innerHTML = txt;
+    }
+</script>
+
+</body>
+</html>

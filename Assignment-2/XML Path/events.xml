@@ -1,0 +1,41 @@
+<events>
+  <event category="conference">
+    <title lang="en">Tech Summit 2024</title>
+    <organizer>Technology Innovations Inc.</organizer>
+    <date>2024-08-15</date>
+    <location>San Francisco, CA</location>
+    <price>299.99</price>
+  </event>
+
+  <event category="workshop">
+    <title lang="en">Digital Marketing Workshop</title>
+    <organizer>Marketing Masters</organizer>
+    <date>2024-09-10</date>
+    <location>New York, NY</location>
+    <price>149.99</price>
+  </event>
+
+  <event category="seminar">
+    <title lang="en">Leadership Seminar</title>
+    <organizer>Leadership Institute</organizer>
+    <date>2024-10-20</date>
+    <location>Chicago, IL</location>
+    <price>99.99</price>
+  </event>
+
+  <event category="conference">
+    <title lang="en">AI Summit</title>
+    <organizer>AI Innovations</organizer>
+    <date>2024-11-05</date>
+    <location>Seattle, WA</location>
+    <price>399.99</price>
+  </event>
+
+  <event category="workshop">
+    <title lang="en">Web Development Bootcamp</title>
+    <organizer>Code Academy</organizer>
+    <date>2024-12-15</date>
+    <location>Los Angeles, CA</location>
+    <price>199.99</price>
+  </event>
+</events>
