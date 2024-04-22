@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Event Management System</title>
+</head>
+<body>
+    <h1>Event Management System</h1>
+    <div id="events"></div>
+    <script>
+        window.onload = function() {
+            var xmlhttp;
+            if (window.XMLHttpRequest) {
+                xmlhttp = new XMLHttpRequest();
+            } else {
+                xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+            }
+            xmlhttp.onreadystatechange = function() {
+                if (xmlhttp.readyState == XMLHttpRequest.DONE) {
+                    if (xmlhttp.status == 200) {
+                        var xmldoc = xmlhttp.responseXML;
+                        var events = xmldoc.getElementsByTagName("event");
+                        var html = "<table border='1'>";
+                        html += "<tr><th>Title</th><th>Date</th><th>Location</th><th>Description</th><th>Organizer</th><th>Availability</th><th>Price</th><th>Capacity</th></tr>";
+                        for (var i = 0; i < events.length; i++) {
+                            html += "<tr>";
+                            html += "<td>" + events[i].getElementsByTagName("title")[0].childNodes[0].nodeValue + "</td>";
+                            html += "<td>" + events[i].getElementsByTagName("date")[0].childNodes[0].nodeValue + "</td>";
+                            html += "<td>" + events[i].getElementsByTagName("location")[0].childNodes[0].nodeValue + "</td>";
+                            html += "<td>" + events[i].getElementsByTagName("description")[0].childNodes[0].nodeValue + "</td>";
+                            html += "<td>" + events[i].getElementsByTagName("organizer")[0].childNodes[0].nodeValue + "</td>";
+                            html += "<td>" + events[i].getElementsByTagName("availability")[0].childNodes[0].nodeValue + "</td>";
+                            html += "<td>" + events[i].getElementsByTagName("price")[0].childNodes[0].nodeValue + "</td>";
+                            html += "<td>" + events[i].getElementsByTagName("capacity")[0].childNodes[0].nodeValue + "</td>";
+                            html += "</tr>";
+                        }
+                        html += "</table>";
+                        document.getElementById("events").innerHTML = html;
+                    } else {
+                        console.error('Failed to load XML file.');
+                    }
+                }
+            };
+            xmlhttp.open("GET", "events.xml", true);
+            xmlhttp.send();
+        };
+    </script>
+</body>
+</html>

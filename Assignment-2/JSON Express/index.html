@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fetch JSON from Express</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #f0f0f0;
+    }
+    .container {
+      text-align: center;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    pre {
+      white-space: pre-wrap; /* Preserve line breaks */
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Fetch JSON from Express</h1>
+    <div id="jsonData"></div> <!-- Container for JSON data -->
+  </div>
+
+  <script>
+    // Fetch JSON data from server
+    fetch('http://localhost:3000/data')
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.json();
+      })
+      .then(data => {
+        // Display JSON data in 'jsonData' div
+        const jsonDataDiv = document.getElementById('jsonData');
+        jsonDataDiv.innerHTML = `<pre>${JSON.stringify(data, null, 2)}</pre>`;
+      })
+      .catch(error => {
+        // Display error message if fetching fails
+        const jsonDataDiv = document.getElementById('jsonData');
+        jsonDataDiv.textContent = 'Error fetching JSON: ' + error;
+      });
+  </script>
+</body>
+</html>

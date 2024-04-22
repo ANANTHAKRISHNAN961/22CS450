@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<events>
+    <event>
+        <title>Music Concert</title>
+        <date>2024-05-10</date>
+        <location>New City Stadium</location>
+        <description>A live music concert featuring popular bands.</description>
+        <organizer>Music Entertainment Co.</organizer>
+        <booking>
+            <availability>true</availability>
+            <price>20.00</price>
+            <capacity>500</capacity>
+        </booking>
+    </event>
+    <event>
+        <title>Sports Tournament</title>
+        <date>2024-06-15</date>
+        <location>Main Sports Complex</location>
+        <description>An inter-school sports tournament with various events.</description>
+        <organizer>Local Sports Association</organizer>
+        <booking>
+            <availability>true</availability>
+            <price>10.00</price>
+            <capacity>200</capacity>
+        </booking>
+    </event>
+    
+</events>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events Booking</title>
+    <script>
+        function loadXMLDoc(filename) {
+            var xhttp;
+            if (window.XMLHttpRequest) {
+                xhttp = new XMLHttpRequest();
+            } else {
+                xhttp = new ActiveXObject("Microsoft.XMLHTTP");
+            }
+            xhttp.open("GET", filename, false);
+            xhttp.send();
+            return xhttp.responseXML;
+        }
+
+        function displayResult() {
+            var xml = loadXMLDoc("events.xml");
+            var xsl = loadXMLDoc("events.xsl");
+            var xsltProcessor = new XSLTProcessor();
+            xsltProcessor.importStylesheet(xsl);
+            var resultDocument = xsltProcessor.transformToFragment(xml, document);
+            document.getElementById("events").appendChild(resultDocument);
+        }
+    </script>
+</head>
+<body onload="displayResult()">
+    <div id="events"></div>
+</body>
+</html>

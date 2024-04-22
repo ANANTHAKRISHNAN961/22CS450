@@ -1,0 +1,11 @@
+<!ELEMENT events (event*)>
+<!ELEMENT event (title, date, location, description, organizer, booking)>
+<!ELEMENT title (#PCDATA)>
+<!ELEMENT date (#PCDATA)>
+<!ELEMENT location (#PCDATA)>
+<!ELEMENT description (#PCDATA)>
+<!ELEMENT organizer (#PCDATA)>
+<!ELEMENT booking (availability, price, capacity)>
+<!ELEMENT availability (#PCDATA)>
+<!ELEMENT price (#PCDATA)>
+<!ELEMENT capacity (#PCDATA)>
