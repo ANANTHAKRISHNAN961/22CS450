@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Library Management</title>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <form id="addBookForm">
+        <input type="text" id="title" placeholder="Title">
+        <input type="text" id="author" placeholder="Author">
+        <input type="number" id="year" placeholder="Year">
+        <button type="submit">Add Book</button>
+    </form>
+    <div id="message"></div>
+
+    <script>
+        $(document).ready(function(){
+            $('#addBookForm').submit(function(event){
+                event.preventDefault(); 
+                var title = $('#title').val();
+                var author = $('#author').val();
+                var year = $('#year').val();
+                var book = {
+                    title: title,
+                    author: author,
+                    year: year
+                };
+                $.ajax({
+                    url: 'https://example.com/add_book.php',
+                    type: 'POST',
+                    data: book,
+                    success: function(response){
+                    
+                        $('#title').val('');
+                        $('#author').val('');
+                        $('#year').val('');
+
+
+                        $('#message').text('Book added successfully!');
+                    },
+                    error: function(xhr, status, error){
+                        console.error(xhr.responseText);
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
